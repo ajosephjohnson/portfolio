@@ -76,8 +76,9 @@ export default function FallingLeaves({
 
 // Helper function to calculate a random starting X position for a leaf.
 function randomXPosition(contentWidth: number) {
-  // Avoid starting a leaf directly at the edges
-  return getRandomIntegerInRange(LEAF_DIMENSION / 2, contentWidth - (LEAF_DIMENSION / 2));
+  // Subtracts the maximum wind effect from the edges so that no x-axis overflow is possible
+  const windBuffer = LEAF_DIMENSION / 2 + WIND_STRENGTH;
+  return getRandomIntegerInRange(windBuffer, contentWidth - windBuffer)
 }
 
 // Helper function to get a random integer within a range (inclusive).
