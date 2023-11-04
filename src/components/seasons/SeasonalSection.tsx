@@ -1,8 +1,8 @@
 'use client'
 
 import { useRef, useLayoutEffect, useState } from "react";
-import FallingLeaves from "./FallingLeaves";
-import { Seasons } from "./Seasons";
+import { Seasons, FallingSnow, FallingLeaves } from "./";
+
 
 export default function SeasonalSection({
   season,
@@ -26,14 +26,22 @@ export default function SeasonalSection({
     }
   }, []);
 
+  const sectionProps = {
+    contentHeight,
+    contentWidth,
+  };
+
   let seasonEffect = null;
   switch (season) {
     case Seasons.Fall:
-      seasonEffect = <FallingLeaves contentHeight={contentHeight} contentWidth={contentWidth} />;
+      seasonEffect = <FallingLeaves { ...sectionProps } />;
+      break;
+    case Seasons.Winter:
+      seasonEffect = <FallingSnow { ...sectionProps } />;
       break;
   }
 
-  return <section>
+  return <section className="overflow-hidden relative">
     {seasonEffect}
     <div ref={contentRef}>{children}</div>
   </section>;

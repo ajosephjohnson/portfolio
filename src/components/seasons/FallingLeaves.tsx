@@ -1,12 +1,15 @@
 'use client'
 
 import { useSprings, animated, easings, to } from '@react-spring/web';
+import { getRandomIntegerInRange, randomXPosition } from './helpers';
 
 
 const ANIMATION_DURATION = 9000;
-const NUM_LEAVES = 300;
+const NUM_LEAVES = 100;
 const WIND_STRENGTH = 50;
-const LEAF_DIMENSION = 40;
+const LEAF_SIZE = 40;
+const DELAY_MIN = 500;
+const DELAY_MAX = 5000;
 
 export default function FallingLeaves({
   contentHeight,
@@ -15,22 +18,22 @@ export default function FallingLeaves({
   contentHeight: number,
   contentWidth: number,
 }) {
-  // Only initialize leaves if content dimensions are non-zero; otherwise, set to zero.
+  // Only initialize if content dimensions are not zero.
   const readyLeaves = contentHeight === 0 || contentWidth === 0 ? 0 : NUM_LEAVES;
 
   const [ springs ] = useSprings(readyLeaves, index => {
     // Generates a random X position for each leaf to start from.
-    const x = randomXPosition(contentWidth);
+    const x = randomXPosition(contentWidth, LEAF_SIZE, WIND_STRENGTH);
     return {
       from: {
         x, // Start position for the X-axis.
-        y: 1 - LEAF_DIMENSION - (LEAF_DIMENSION / 4), // Start position for the Y-axis (off-screen above the viewport with buffer).
+        y: 1 - LEAF_SIZE - (LEAF_SIZE / 4), // Start position for the Y-axis (off-screen above the viewport with buffer).
       },
       to: {
         x, // End position for the X-axis (same as start).
-        y: contentHeight - LEAF_DIMENSION, // End position for the Y-axis (just above the bottom of the viewport).
+        y: contentHeight - LEAF_SIZE, // End position for the Y-axis (just above the bottom of the viewport).
       },
-      delay: index * getRandomIntegerInRange(250, 2000), // Staggered delay for each leaf.
+      delay: index * getRandomIntegerInRange(DELAY_MIN, DELAY_MAX), // Staggered delay for each leaf.
       config: {
         // Configuration for the spring physics.
         tension: 120,
@@ -57,8 +60,8 @@ export default function FallingLeaves({
     return <animated.div
       key={i}
       style={{
-        width: LEAF_DIMENSION,
-        height: LEAF_DIMENSION,
+        width: LEAF_SIZE,
+        height: LEAF_SIZE,
         background: "url('/leaf.svg') no-repeat center center",
         backgroundSize: 'cover',
         willChange: 'transform',
@@ -73,15 +76,3 @@ export default function FallingLeaves({
     />
   });
 };
-
-// Helper function to calculate a random starting X position for a leaf.
-function randomXPosition(contentWidth: number) {
-  // Subtracts the maximum wind effect from the edges so that no x-axis overflow is possible
-  const windBuffer = LEAF_DIMENSION / 2 + WIND_STRENGTH;
-  return getRandomIntegerInRange(windBuffer, contentWidth - windBuffer)
-}
-
-// Helper function to get a random integer within a range (inclusive).
-function getRandomIntegerInRange(min: number, max: number) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
