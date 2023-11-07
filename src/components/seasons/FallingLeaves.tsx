@@ -1,7 +1,8 @@
 'use client'
 
 import { useSprings, animated, easings, to } from '@react-spring/web';
-import { getRandomIntegerInRange, randomXPosition } from './helpers';
+import { getRandomIntegerInRange, getRandomXPosition } from './helpers';
+import { SeasonalSectionProps } from './SeasonalSection';
 
 
 const ANIMATION_DURATION = 9000;
@@ -11,19 +12,13 @@ const LEAF_SIZE = 40;
 const DELAY_MIN = 500;
 const DELAY_MAX = 5000;
 
-export default function FallingLeaves({
-  contentHeight,
-  contentWidth,
-}: {
-  contentHeight: number,
-  contentWidth: number,
-}) {
+export default function FallingLeaves({ contentHeight, contentWidth }: SeasonalSectionProps) {
   // Only initialize if content dimensions are not zero.
-  const readyLeaves = contentHeight === 0 || contentWidth === 0 ? 0 : NUM_LEAVES;
+  const isReady = contentHeight !== 0 && contentWidth !== 0;
 
-  const [ springs ] = useSprings(readyLeaves, index => {
+  const [ springs ] = useSprings(isReady ? NUM_LEAVES : 0, index => {
     // Generates a random X position for each leaf to start from.
-    const x = randomXPosition(contentWidth, LEAF_SIZE, WIND_STRENGTH);
+    const x = getRandomXPosition(contentWidth, LEAF_SIZE, WIND_STRENGTH);
     return {
       from: {
         x, // Start position for the X-axis.
@@ -75,4 +70,4 @@ export default function FallingLeaves({
       }} 
     />
   });
-};
+}

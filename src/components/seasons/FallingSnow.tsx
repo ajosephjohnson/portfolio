@@ -1,7 +1,8 @@
 'use client'
 
 import { useSprings, animated, easings, to } from '@react-spring/web';
-import { getRandomIntegerInRange, randomXPosition } from './helpers';
+import { getRandomIntegerInRange, getRandomXPosition } from './helpers';
+import { SeasonalSectionProps } from './SeasonalSection';
 
 
 const ANIMATION_DURATION = 9000;
@@ -11,19 +12,13 @@ const SNOWFLAKE_SIZE = 10;
 const DELAY_MIN = 0;
 const DELAY_MAX = 1000;
 
-export default function LightSnowfall({
-  contentHeight,
-  contentWidth,
-}: {
-  contentHeight: number,
-  contentWidth: number,
-}) {
+export default function LightSnowfall({ contentHeight, contentWidth }: SeasonalSectionProps) {
   // Only initialize if content dimensions are not zero.
-  const readySnowflakes = contentHeight === 0 || contentWidth === 0 ? 0 : NUM_SNOWFLAKES;
+  const isReady = contentHeight !== 0 && contentWidth !== 0;
 
-  const [ springs ] = useSprings(readySnowflakes, index => {
+  const [ springs ] = useSprings(isReady ? NUM_SNOWFLAKES : 0, index => {
     // Generates a random X position for each snowflake to start from.
-    const x = randomXPosition(contentWidth, SNOWFLAKE_SIZE, WIND_STRENGTH);
+    const x = getRandomXPosition(contentWidth, SNOWFLAKE_SIZE, WIND_STRENGTH);
     return {
       from: {
         x, // Start position for the X-axis.
@@ -72,4 +67,4 @@ export default function LightSnowfall({
       }}
     />
   });
-};
+}
