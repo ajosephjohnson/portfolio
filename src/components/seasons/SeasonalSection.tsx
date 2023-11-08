@@ -1,7 +1,13 @@
 'use client'
 
 import { useRef, useLayoutEffect, useState } from "react";
-import { Seasons, FallingSnow, FallingLeaves, GrowingFlowers } from "./";
+import {
+  Seasons,
+  FallingSnow,
+  FallingLeaves,
+  GrowingFlowers,
+  LightRainfall,
+} from "./";
 
 
 export default function SeasonalSection({
@@ -40,7 +46,10 @@ export default function SeasonalSection({
       seasonEffect = <FallingSnow { ...sectionProps } />;
       break;
     case Seasons.Spring:
-      seasonEffect = <GrowingFlowers { ...sectionProps } />;
+      seasonEffect = <>
+        <LightRainfall { ...sectionProps } />
+        <GrowingFlowers { ...sectionProps } />
+      </>;
       break;
   }
 

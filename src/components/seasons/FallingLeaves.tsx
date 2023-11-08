@@ -22,7 +22,7 @@ export default function FallingLeaves({ contentHeight, contentWidth }: SeasonalS
     return {
       from: {
         x, // Start position for the X-axis.
-        y: 1 - LEAF_SIZE - (LEAF_SIZE / 4), // Start position for the Y-axis (off-screen above the viewport with buffer).
+        y: 0 - LEAF_SIZE - (LEAF_SIZE / 4), // Start position for the Y-axis (off-screen above the viewport with buffer).
       },
       to: {
         x, // End position for the X-axis (same as start).
