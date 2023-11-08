@@ -12,7 +12,7 @@ const RAINDROP_HEIGHT = 10;
 const DELAY_MIN = 100;
 const DELAY_MAX = 100;
 const WIND_STRENGTH = -200;
-const ROTATION_FACTOR = -0.15;
+const ROTATION_FACTOR = -0.10;
 
 export default function LightRainfall({ contentHeight, contentWidth }: SeasonalSectionProps) {
   // Only initialize if content dimensions are not zero.

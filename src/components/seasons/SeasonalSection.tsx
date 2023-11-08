@@ -7,6 +7,7 @@ import {
   FallingLeaves,
   GrowingFlowers,
   LightRainfall,
+  SummerSun,
 } from "./";
 
 
@@ -50,6 +51,9 @@ export default function SeasonalSection({
         <LightRainfall { ...sectionProps } />
         <GrowingFlowers { ...sectionProps } />
       </>;
+      break;
+    case Seasons.Summer:
+      seasonEffect = <SummerSun { ...sectionProps } />;
       break;
   }
 
