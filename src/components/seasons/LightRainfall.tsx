@@ -1,3 +1,5 @@
+'use client'
+
 import { useSprings, animated, easings, to } from '@react-spring/web';
 import { getRandomIntegerInRange, getRandomXPosition } from './helpers';
 import { SeasonalSectionProps } from './SeasonalSection';
