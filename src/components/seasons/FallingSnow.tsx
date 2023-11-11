@@ -9,6 +9,8 @@ const ANIMATION_DURATION = 9000;
 const NUM_SNOWFLAKES = 250;
 const WIND_STRENGTH = 10;
 const SNOWFLAKE_SIZE = 10;
+const SNOWFLAKE_OPACITY_MIN = 0.7; // Minimum opacity
+const SNOWFLAKE_OPACITY_MAX = 1; // Maximum opacity
 const DELAY_MIN = 0;
 const DELAY_MAX = 1000;
 
@@ -46,16 +48,19 @@ export default function LightSnowfall({ contentHeight, contentWidth }: SeasonalS
   return springs.map((props, i) => {
     // Determines the frequency and direction of the "wind" affecting snowflake movement.
     const windInitialDirection = Math.random() < 0.5 ? -1 : 1;
+    const sizeVariation = getRandomIntegerInRange(SNOWFLAKE_SIZE - 2, SNOWFLAKE_SIZE + 2);
+    const snowflakeOpacity = getRandomIntegerInRange(SNOWFLAKE_OPACITY_MIN, SNOWFLAKE_OPACITY_MAX);
 
     return <animated.div
       key={i}
       style={{
-        width: SNOWFLAKE_SIZE,
-        height: SNOWFLAKE_SIZE,
-        background: `url('/snowflakes/snowflake-${getRandomIntegerInRange(1, 12)}.svg') no-repeat center center`, // Use a snowflake image
+        width: sizeVariation,
+        height: sizeVariation,
+        background: `url('/snowflakes/snowflake-${getRandomIntegerInRange(1, 12)}.svg') no-repeat center center`,
         backgroundSize: 'cover',
         position: 'absolute',
         willChange: 'transform',
+        opacity: snowflakeOpacity,
         transform: to([ props.x, props.y ], (x, y) => {
           // Continuous rotation as the snowflake falls
           const rotation = y / contentHeight * 360;

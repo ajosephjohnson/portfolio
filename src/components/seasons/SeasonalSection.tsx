@@ -19,8 +19,8 @@ export default function SeasonalSection({
   children: React.ReactNode;
 }) {
   const contentRef = useRef<HTMLDivElement>(null);
-  const [contentHeight, setContentHeight] = useState(0);
-  const [contentWidth, setContentWidth] = useState(0);
+  const [ contentHeight, setContentHeight ] = useState(0);
+  const [ contentWidth, setContentWidth ] = useState(0);
 
   // useLayoutEffect is used over useEffect because we need to measure the 
   // dimensions of the DOM element as soon as it is rendered but before the 

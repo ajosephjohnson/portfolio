@@ -25,7 +25,7 @@ export default function LightRainfall({ contentHeight, contentWidth }: SeasonalS
     return {
       from: {
         x: xStart, // Start position for the X-axis.
-        y: 0 - RAINDROP_HEIGHT, // Start position for the Y-axis (off-screen above the viewport).
+        y: 0 - RAINDROP_HEIGHT - (RAINDROP_HEIGHT / 4), // Start position for the Y-axis (off-screen above the viewport).
         rotateZ: rotation, // Rotation angle.
       },
       to: {
@@ -50,7 +50,7 @@ export default function LightRainfall({ contentHeight, contentWidth }: SeasonalS
       style={{
         height: RAINDROP_HEIGHT,
         width: RAINDROP_WIDTH,
-        backgroundColor: '#ADD8E6',
+        backgroundColor: 'rgba(255, 255, 255, 0.75)',
         position: 'absolute',
         willChange: 'transform',
         ...props,
