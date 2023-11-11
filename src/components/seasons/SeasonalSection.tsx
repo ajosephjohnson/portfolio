@@ -57,7 +57,7 @@ export default function SeasonalSection({
       break;
   }
 
-  return <section className="overflow-hidden relative">
+  return <section className="overflow-hidden relative sky-gradient">
     {seasonEffect}
     <div ref={contentRef}>{children}</div>
   </section>;
