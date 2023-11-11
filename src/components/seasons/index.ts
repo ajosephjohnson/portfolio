@@ -4,6 +4,7 @@ export { default as GrowingFlowers } from './GrowingFlowers';
 export { default as LightRainfall } from './LightRainfall';
 export { default as SeasonalSection } from './SeasonalSection';
 export { default as SummerSun } from './SummerSun';
+export { default as SummerMoon } from './SummerMoon';
 
 export enum Seasons {
   Fall,

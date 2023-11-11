@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useLayoutEffect, useState } from "react";
+import { useRef, useLayoutEffect, useState, useEffect } from "react";
 import {
   Seasons,
   FallingSnow,
@@ -8,6 +8,7 @@ import {
   GrowingFlowers,
   LightRainfall,
   SummerSun,
+  SummerMoon,
 } from "./";
 
 
@@ -21,6 +22,18 @@ export default function SeasonalSection({
   const contentRef = useRef<HTMLDivElement>(null);
   const [ contentHeight, setContentHeight ] = useState(0);
   const [ contentWidth, setContentWidth ] = useState(0);
+  const [ isDarkMode, setIsDarkMode ] = useState(false);
+
+  // Detect system dark mode changes
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleChange = (e: MediaQueryListEvent | MediaQueryList) => {
+      setIsDarkMode(e.matches);
+    };
+    handleChange(mediaQuery);
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
 
   // useLayoutEffect is used over useEffect because we need to measure the 
   // dimensions of the DOM element as soon as it is rendered but before the 
@@ -53,7 +66,9 @@ export default function SeasonalSection({
       </>;
       break;
     case Seasons.Summer:
-      seasonEffect = <SummerSun { ...sectionProps } />;
+      seasonEffect = isDarkMode
+        ? <SummerMoon { ...sectionProps } />
+        : <SummerSun { ...sectionProps } />;
       break;
   }
 

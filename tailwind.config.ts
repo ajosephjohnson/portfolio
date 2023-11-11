@@ -8,9 +8,6 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      boxShadow: {
-        'radiance': '0 0 30px 10px rgba(252, 211, 77, 0.7)',
-      },
       colors: {
         // Light Mode Gradient
         'day-sky-common': '#CDDDEE',

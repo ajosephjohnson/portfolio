@@ -56,8 +56,10 @@ export default function LightSnowfall({ contentHeight, contentWidth }: SeasonalS
       style={{
         width: sizeVariation,
         height: sizeVariation,
-        background: `url('/snowflakes/snowflake-${getRandomIntegerInRange(1, 12)}.svg') no-repeat center center`,
-        backgroundSize: 'cover',
+        backgroundImage: `url('/snowflakes/snowflake-${getRandomIntegerInRange(1, 12)}.svg')`,
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center center',
+        backgroundSize: 'cover',        
         position: 'absolute',
         willChange: 'transform',
         opacity: snowflakeOpacity,
