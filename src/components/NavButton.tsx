@@ -2,7 +2,13 @@
 
 const SCROLL_DURATION = 2000;
 
-export default function NavButton({ season }: { season: string }) {
+export default function NavButton({
+  season,
+  className,
+}: {
+  season: string,
+  className: string,
+}) {
   const smoothScroll = (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
 
@@ -81,7 +87,7 @@ export default function NavButton({ season }: { season: string }) {
   return (
     <button
       onClick={smoothScroll}
-      className="transition-colors duration-300 hover:text-tan py-5 px-4"
+      className={className}
     >
       {season.charAt(0).toUpperCase() + season.slice(1)}
     </button>

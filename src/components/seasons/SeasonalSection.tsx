@@ -28,7 +28,7 @@ function SeasonalAnimation({
   props,
 }: {
   season: Seasons,
-  props: SeasonalAnimationProps
+  props: SeasonalAnimationProps,
 }) {
   switch (season) {
     case Seasons.Fall:
@@ -53,8 +53,8 @@ export default function SeasonalSection({
   season,
   children,
 }: {
-  season: Seasons;
-  children: React.ReactNode;
+  season: Seasons,
+  children: React.ReactNode,
 }) {
   const ref = useRef<HTMLDivElement>(null);
 
