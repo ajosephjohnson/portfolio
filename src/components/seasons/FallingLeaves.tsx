@@ -80,7 +80,7 @@ export default function FallingLeaves({ contentHeight, contentWidth, isPageVisib
         transform: to([ props.y ], (y) => {
           // Calculates the wind effect based on the leaf's Y position.        
           const wind = WIND_STRENGTH * Math.sin(y / (contentWidth / windFrequency));
-          return `translateX(${wind * windInitialDirection}px) rotateZ(${wind * windInitialDirection}deg)`;
+          return `translateX(${wind * windInitialDirection}px) rotateZ(${wind * windInitialDirection}deg) scaleX(${windInitialDirection * -1})`;
         }),
         ...props
       }} 

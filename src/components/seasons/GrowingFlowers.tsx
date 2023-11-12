@@ -10,19 +10,20 @@ import { getRandomFloatInRange, getRandomIntegerInRange } from './helpers';
 const FLOWER_SIZE = 50;
 const NUM_FLOWERS = 10;
 const FLOWER_GROWTH_SCALE = .86;
-const MIN_SLANT = -15;
-const MAX_SLANT = 15;
+const MIN_SLANT = -30;
+const MAX_SLANT = 30;
 const MIN_DELAY = .75;
 const MAX_DELAY = 1.25;
 const MIN_SCALE = 1;
 const MAX_SCALE = 1.50;
-const SEGMENT_OVERLAP = .3;
+const SEGMENT_X_BUFFER = 1.5;
 
 interface FlowerStyles {
   x: number;
   slant: number;
   delay: number;
   scale: number;
+  imgVariation: number;
 }
 
 export default function GrowingFlowers({ contentHeight, contentWidth }: SeasonalSectionProps) {
@@ -73,15 +74,15 @@ export default function GrowingFlowers({ contentHeight, contentWidth }: Seasonal
     // Divide the contentWidth into equal segments based on the number of flowers.
     const segmentWidth = contentWidth / NUM_FLOWERS;
 
-    // Offset allows overlap while still maintaining a generally even spread.
-    const segmentOffset = segmentWidth * SEGMENT_OVERLAP;
+    // Offset positions the flowers together in clusters
+    const segmentOffset = segmentWidth * SEGMENT_X_BUFFER;
 
     // Determine the segment in which this flower will be placed.
     const segmentStart = segmentWidth * index;
 
     // Apply offsets to the segment range.
-    const xMin = segmentStart - segmentOffset;
-    const xMax = segmentStart + segmentWidth + segmentOffset - FLOWER_SIZE;
+    const xMin = segmentStart + segmentOffset;
+    const xMax = segmentStart + segmentWidth - segmentOffset - FLOWER_SIZE;
 
     // Store initial flower growing positions and styles
     const x = getRandomIntegerInRange(xMin, xMax);
@@ -89,13 +90,16 @@ export default function GrowingFlowers({ contentHeight, contentWidth }: Seasonal
     const delay = getRandomFloatInRange(MIN_DELAY, MAX_DELAY);
     const scale = getRandomFloatInRange(MIN_SCALE, MAX_SCALE);
 
+    // Cluster the flowers by type
+    const imgVariation = Math.floor(index / (NUM_FLOWERS / 2)) + 1;
+
     setFlowerStyles((prevState) => {
       const newState = [ ...prevState ];
-      newState[ index ] = { x, slant, delay, scale };
+      newState[ index ] = { x, slant, delay, scale, imgVariation };
       return newState;
     });
 
-    return { x, slant, delay, scale };
+    return { x, slant, delay, scale, imgVariation };
   };
 
   // React-spring animations
@@ -114,19 +118,20 @@ export default function GrowingFlowers({ contentHeight, contentWidth }: Seasonal
 
     // Calculate the new y position based on the scale.
     // It starts at the initial position and moves upwards as it scales.
-    const baseY = contentHeight - FLOWER_SIZE;
+    const baseY = contentHeight - (FLOWER_SIZE / 5);
     const y = baseY - scale * FLOWER_SIZE * FLOWER_GROWTH_SCALE;
+    const scaleXTransform = slant <= 0 ? 'scaleX(-1)' : '';
 
     return {
       from: {
         x,  
         y: baseY,
-        transform: `scale(0) rotate(0deg)`,
+        transform: `scale(0) rotate(0deg) ${scaleXTransform}`,
       },
       to: {
         x,
         y,
-        transform: `scale(${scale * scaleVariation}) rotate(${slant}deg)`,
+        transform: `scale(${scale * scaleVariation}) rotate(${slant}deg) ${scaleXTransform}`,
       },
       config: {
         // Configuration for the spring physics.
@@ -144,17 +149,21 @@ export default function GrowingFlowers({ contentHeight, contentWidth }: Seasonal
 
   return (
     <div ref={containerRef} className="absolute" style={{ height: contentHeight, width: contentWidth }}>
-      {springs.map((props, i) => (
-        <animated.div key={i} style={{
-          background: "url('/flower.svg') no-repeat center center",
-          backgroundSize: 'cover',
-          width: FLOWER_SIZE,
-          height: FLOWER_SIZE * 2,
-          position: 'absolute',
-          willChange: 'transform',
-          ...props,
-        }} />
-      ))}
+      {springs.map((props, i) => {
+        const { imgVariation } = getFlowerStyles(i);
+        return (
+          <animated.div key={i} style={{
+            width: FLOWER_SIZE,
+            height: FLOWER_SIZE,
+            background: `url('/flowers/flower-${imgVariation}.svg') no-repeat center center`,
+            filter: 'saturate(0.5)',
+            backgroundSize: 'cover',
+            position: 'absolute',
+            willChange: 'transform',
+            ...props,
+          }} />
+        );
+      })}
     </div>
   );
 }
