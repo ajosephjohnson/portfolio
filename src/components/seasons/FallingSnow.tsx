@@ -1,5 +1,7 @@
 'use client'
 
+import { useEffect } from 'react';
+
 import { useSprings, animated, easings, to } from '@react-spring/web';
 import { getRandomIntegerInRange, getRandomXPosition } from './helpers';
 import { SeasonalSectionProps } from './SeasonalSection';
@@ -14,11 +16,11 @@ const SNOWFLAKE_OPACITY_MAX = 1; // Maximum opacity
 const DELAY_MIN = 0;
 const DELAY_MAX = 1000;
 
-export default function LightSnowfall({ contentHeight, contentWidth }: SeasonalSectionProps) {
+export default function LightSnowfall({ contentHeight, contentWidth, isPageVisible }: SeasonalSectionProps) {
   // Only initialize if content dimensions are not zero.
   const isReady = contentHeight !== 0 && contentWidth !== 0;
 
-  const [ springs ] = useSprings(isReady ? NUM_SNOWFLAKES : 0, index => {
+  const [ springs, api ] = useSprings(isReady ? NUM_SNOWFLAKES : 0, index => {
     // Generates a random X position for each snowflake to start from.
     const x = getRandomXPosition(contentWidth, SNOWFLAKE_SIZE, WIND_STRENGTH);
     return {
@@ -44,6 +46,14 @@ export default function LightSnowfall({ contentHeight, contentWidth }: SeasonalS
     contentHeight,
     contentWidth,
   ]);
+
+  useEffect(() => {
+    if (isPageVisible) {
+      api.resume();
+    } else {
+      api.pause();
+    }
+  }, [ isPageVisible, api ]);
 
   return springs.map((props, i) => {
     // Determines the frequency and direction of the "wind" affecting snowflake movement.

@@ -1,5 +1,7 @@
 'use client'
 
+import { useEffect } from 'react';
+
 import { useSprings, animated, easings, to } from '@react-spring/web';
 import { getRandomIntegerInRange, getRandomXPosition } from './helpers';
 import { SeasonalSectionProps } from './SeasonalSection';
@@ -14,11 +16,11 @@ const DELAY_MAX = 100;
 const WIND_STRENGTH = -200;
 const ROTATION_FACTOR = -0.10;
 
-export default function LightRainfall({ contentHeight, contentWidth }: SeasonalSectionProps) {
+export default function LightRainfall({ contentHeight, contentWidth, isPageVisible }: SeasonalSectionProps) {
   // Only initialize if content dimensions are not zero.
   const isReady = contentHeight !== 0 && contentWidth !== 0;
 
-  const [ springs ] = useSprings(isReady ? NUM_RAINDROPS : 0, index => {
+  const [ springs, api ] = useSprings(isReady ? NUM_RAINDROPS : 0, index => {
     const xStart = getRandomXPosition(contentWidth, RAINDROP_WIDTH, 0);
     const xEnd = xStart + WIND_STRENGTH;
     const rotation = WIND_STRENGTH * ROTATION_FACTOR;
@@ -43,6 +45,14 @@ export default function LightRainfall({ contentHeight, contentWidth }: SeasonalS
     contentHeight,
     contentWidth,
   ]);
+
+  useEffect(() => {
+    if (isPageVisible) {
+      api.resume();
+    } else {
+      api.pause();
+    }
+  }, [ isPageVisible, api ]);
 
   return springs.map((props, i) => {
     return <animated.div

@@ -1,5 +1,7 @@
 'use client'
 
+import { useEffect } from 'react';
+
 import { useSprings, animated, easings, to } from '@react-spring/web';
 import { getRandomIntegerInRange, getRandomXPosition } from './helpers';
 import { SeasonalSectionProps } from './SeasonalSection';
@@ -12,11 +14,11 @@ const LEAF_SIZE = 40;
 const DELAY_MIN = 500;
 const DELAY_MAX = 5000;
 
-export default function FallingLeaves({ contentHeight, contentWidth }: SeasonalSectionProps) {
+export default function FallingLeaves({ contentHeight, contentWidth, isPageVisible }: SeasonalSectionProps) {
   // Only initialize if content dimensions are not zero.
   const isReady = contentHeight !== 0 && contentWidth !== 0;
 
-  const [ springs ] = useSprings(isReady ? NUM_LEAVES : 0, index => {
+  const [ springs, api ] = useSprings(isReady ? NUM_LEAVES : 0, index => {
     // Generates a random X position for each leaf to start from.
     const x = getRandomXPosition(contentWidth, LEAF_SIZE, WIND_STRENGTH);
     return {
@@ -46,6 +48,14 @@ export default function FallingLeaves({ contentHeight, contentWidth }: SeasonalS
     contentHeight,
     contentWidth,
   ]);
+
+  useEffect(() => {
+    if (isPageVisible) {
+      api.resume();
+    } else {
+      api.pause();
+    }
+  }, [ isPageVisible, api ]);
 
   return springs.map((props, i) => {
     // Determines the frequency and direction of the "wind" affecting leaf movement.
