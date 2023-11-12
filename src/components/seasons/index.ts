@@ -6,9 +6,11 @@ export { default as SeasonalSection } from './SeasonalSection';
 export { default as SummerSun } from './SummerSun';
 export { default as SummerMoon } from './SummerMoon';
 
+export type { SeasonalAnimationProps } from './SeasonalSection';
+
 export enum Seasons {
-  Fall,
-  Winter,
-  Spring,
-  Summer,
+  Fall = 'fall',
+  Winter = 'winter',
+  Spring = 'spring',
+  Summer = 'summer',
 }

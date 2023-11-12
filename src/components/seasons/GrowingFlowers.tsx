@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 import { animated, useSprings } from '@react-spring/web';
-import { SeasonalSectionProps } from './SeasonalSection';
+import { SeasonalAnimationProps } from './SeasonalSection';
 import { getRandomFloatInRange, getRandomIntegerInRange } from './helpers';
 
 
@@ -26,7 +26,7 @@ interface FlowerStyles {
   imgVariation: number;
 }
 
-export default function GrowingFlowers({ contentHeight, contentWidth }: SeasonalSectionProps) {
+export default function GrowingFlowers({ contentHeight, contentWidth }: SeasonalAnimationProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Scroll position state

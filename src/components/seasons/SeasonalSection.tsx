@@ -6,15 +6,48 @@ import useDarkMode from "@/hooks/useDarkMode";
 import useContentDimensions from "@/hooks/useContentDimensions";
 import usePageVisibility from "@/hooks/usePageVisibility";
 import {
-  Seasons,
   FallingSnow,
   FallingLeaves,
   GrowingFlowers,
   LightRainfall,
   SummerSun,
   SummerMoon,
+  Seasons,
 } from "./";
 
+
+export interface SeasonalAnimationProps {
+  contentHeight: number;
+  contentWidth: number;
+  isPageVisible: boolean;
+  isDarkMode: boolean;
+}
+
+function SeasonalAnimation({
+  season,
+  props,
+}: {
+  season: Seasons,
+  props: SeasonalAnimationProps
+}) {
+  switch (season) {
+    case Seasons.Fall:
+      return <FallingLeaves { ...props } />;
+    case Seasons.Winter:
+      return <FallingSnow { ...props } />;
+    case Seasons.Spring:
+      return <>
+        <LightRainfall { ...props } />
+        <GrowingFlowers { ...props } />
+      </>;
+    case Seasons.Summer:
+      return props.isDarkMode
+        ? <SummerMoon { ...props } />
+        : <SummerSun { ...props } />;
+    default:
+      return null;
+  }
+}
 
 export default function SeasonalSection({
   season,
@@ -29,41 +62,15 @@ export default function SeasonalSection({
   const isPageVisible = usePageVisibility();
   const isDarkMode = useDarkMode();
 
-  const sectionProps = {
+  const seasonalAnimationProps = {
     contentHeight,
     contentWidth,
     isPageVisible,
+    isDarkMode,
   };
 
-  let seasonEffect = null;
-  switch (season) {
-    case Seasons.Fall:
-      seasonEffect = <FallingLeaves { ...sectionProps } />;
-      break;
-    case Seasons.Winter:
-      seasonEffect = <FallingSnow { ...sectionProps } />;
-      break;
-    case Seasons.Spring:
-      seasonEffect = <>
-        <LightRainfall { ...sectionProps } />
-        <GrowingFlowers { ...sectionProps } />
-      </>;
-      break;
-    case Seasons.Summer:
-      seasonEffect = isDarkMode
-        ? <SummerMoon { ...sectionProps } />
-        : <SummerSun { ...sectionProps } />;
-      break;
-  }
-
-  return <section className="overflow-hidden relative sky-gradient">
-    {seasonEffect}
+  return <section id={season} className="overflow-hidden relative sky-gradient">
+    <SeasonalAnimation season={season} props={seasonalAnimationProps} />
     <div ref={ref}>{children}</div>
   </section>;
-}
-
-export interface SeasonalSectionProps {
-  contentHeight: number;
-  contentWidth: number;
-  isPageVisible: boolean;
 }

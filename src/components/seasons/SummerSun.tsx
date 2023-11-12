@@ -1,15 +1,15 @@
 'use client'
 
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { animated, useSpring } from '@react-spring/web';
-import { SeasonalSectionProps } from './SeasonalSection';
+import { SeasonalAnimationProps } from './SeasonalSection';
 
 
 const SUN_SIZE = 50;
 const ARC_MULTIPLIER = 1.75;
 const COLOR_CHANGE_START = 0.70;
 
-export default function SummerSun({ contentHeight, contentWidth }: SeasonalSectionProps) {
+export default function SummerSun({ contentHeight, contentWidth }: SeasonalAnimationProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [ scrollY, setScrollY ] = useState(0);
   const [ animationStartScrollPosition, setAnimationStartScrollPosition ] = useState(0);

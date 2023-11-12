@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 
 import { useSprings, animated, easings, to } from '@react-spring/web';
 import { getRandomIntegerInRange, getRandomXPosition } from './helpers';
-import { SeasonalSectionProps } from './SeasonalSection';
+import { SeasonalAnimationProps } from './SeasonalSection';
 
 
 const ANIMATION_DURATION = 750;
@@ -17,7 +17,7 @@ const WIND_STRENGTH = -200;
 const ROTATION_FACTOR = -0.10;
 const RAIN_COLOR = 'rgba(234, 245, 248, 0.75)';
 
-export default function LightRainfall({ contentHeight, contentWidth, isPageVisible }: SeasonalSectionProps) {
+export default function LightRainfall({ contentHeight, contentWidth, isPageVisible }: SeasonalAnimationProps) {
   // Only initialize if content dimensions are not zero.
   const isReady = contentHeight !== 0 && contentWidth !== 0;
 

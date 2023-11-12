@@ -16,6 +16,11 @@ const config: Config = {
         // Dark Mode Gradient
         'night-sky-common': '#20232A',
         'night-sky-mid': '#33363D',
+
+        // theme colors
+        'tan': '#D2B48C',
+        'sienna': '#A0522D',
+        'peru': '#CD853F',
       },
     },
   },

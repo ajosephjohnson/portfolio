@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 
 import { useSprings, animated, easings, to } from '@react-spring/web';
 import { getRandomIntegerInRange, getRandomXPosition } from './helpers';
-import { SeasonalSectionProps } from './SeasonalSection';
+import { SeasonalAnimationProps } from './SeasonalSection';
 import LeafSvg from './LeafSvg';
 
 
@@ -14,10 +14,10 @@ const WIND_STRENGTH = 50;
 const LEAF_SIZE = 40;
 const DELAY_MIN = 500;
 const DELAY_MAX = 5000;
-const LEAF_COLORS = [ '#D2B48C', '#A0522D', '#CD853F' ];
+const LEAF_COLORS = [ 'fill-tan', 'fill-sienna', 'fill-peru' ];
 const SIZE_VARIATION = 10;
 
-export default function FallingLeaves({ contentHeight, contentWidth, isPageVisible }: SeasonalSectionProps) {
+export default function FallingLeaves({ contentHeight, contentWidth, isPageVisible }: SeasonalAnimationProps) {
   // Only initialize if content dimensions are not zero.
   const isReady = contentHeight !== 0 && contentWidth !== 0;
 
@@ -67,7 +67,7 @@ export default function FallingLeaves({ contentHeight, contentWidth, isPageVisib
 
     // color and size variations
     const randomColorIndex = Math.floor(Math.random() * LEAF_COLORS.length);
-    const leafColor = LEAF_COLORS[ randomColorIndex ];
+    const fillColorClass = LEAF_COLORS[ randomColorIndex ];
     const sizeVariation = getRandomIntegerInRange(LEAF_SIZE - SIZE_VARIATION, LEAF_SIZE + SIZE_VARIATION);
 
     return <animated.div
@@ -85,7 +85,7 @@ export default function FallingLeaves({ contentHeight, contentWidth, isPageVisib
         ...props
       }} 
     >
-      <LeafSvg color={leafColor} />
+      <LeafSvg colorClass={fillColorClass} />
     </animated.div>
   });
 }
