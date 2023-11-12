@@ -8,7 +8,7 @@ import { SeasonalSectionProps } from './SeasonalSection';
 
 
 const ANIMATION_DURATION = 750;
-const NUM_RAINDROPS = 500;
+const NUM_RAINDROPS = 250;
 const RAINDROP_WIDTH = 2;
 const RAINDROP_HEIGHT = 10;
 const DELAY_MIN = 100;
@@ -21,7 +21,7 @@ export default function LightRainfall({ contentHeight, contentWidth, isPageVisib
   const isReady = contentHeight !== 0 && contentWidth !== 0;
 
   const [ springs, api ] = useSprings(isReady ? NUM_RAINDROPS : 0, index => {
-    const xStart = getRandomXPosition(contentWidth, RAINDROP_WIDTH, 0);
+    const xStart = getRandomXPosition(contentWidth + (contentWidth * .4), RAINDROP_WIDTH, 0);
     const xEnd = xStart + WIND_STRENGTH;
     const rotation = WIND_STRENGTH * ROTATION_FACTOR;
     return {
@@ -39,7 +39,8 @@ export default function LightRainfall({ contentHeight, contentWidth, isPageVisib
       config: {
         duration: ANIMATION_DURATION,
         easing: easings.linear,
-      }
+      },
+      loop: true,
     };
   }, [
     contentHeight,
