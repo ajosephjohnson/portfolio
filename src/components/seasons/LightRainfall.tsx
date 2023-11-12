@@ -15,6 +15,7 @@ const DELAY_MIN = 100;
 const DELAY_MAX = 100;
 const WIND_STRENGTH = -200;
 const ROTATION_FACTOR = -0.10;
+const RAIN_COLOR = 'rgba(234, 245, 248, 0.75)';
 
 export default function LightRainfall({ contentHeight, contentWidth, isPageVisible }: SeasonalSectionProps) {
   // Only initialize if content dimensions are not zero.
@@ -61,7 +62,7 @@ export default function LightRainfall({ contentHeight, contentWidth, isPageVisib
       style={{
         height: RAINDROP_HEIGHT,
         width: RAINDROP_WIDTH,
-        backgroundColor: 'rgba(255, 255, 255, 0.75)',
+        backgroundColor: RAIN_COLOR,
         position: 'absolute',
         willChange: 'transform',
         ...props,

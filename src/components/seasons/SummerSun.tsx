@@ -65,7 +65,7 @@ export default function SummerSun({ contentHeight, contentWidth }: SeasonalSecti
     // Calculate the progress of the color transition.
     const colorProgress = Math.max(0, (progress - COLOR_CHANGE_START) / (1 - COLOR_CHANGE_START));
 
-    const startColor = { r: 252, g: 211, b: 77 }; // Bright yellow color for the starting position of the sun.
+    const startColor = { r: 255, g: 219, b: 88 }; // Bright yellow color for the starting position of the sun.
     const endColor = { r: 255, g: 69, b: 0 };     // Reddish sunset color for the ending position of the sun.
 
     // Interpolate the red, green, and blue components of the color based on the colorProgress.

@@ -10,8 +10,8 @@ const config: Config = {
     extend: {
       colors: {
         // Light Mode Gradient
-        'day-sky-common': '#CDDDEE',
-        'day-sky-mid': '#BCCEDD',
+        'day-sky-common': '#486D87',
+        'day-sky-mid': '#78909C',
 
         // Dark Mode Gradient
         'night-sky-common': '#20232A',

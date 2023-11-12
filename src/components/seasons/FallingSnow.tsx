@@ -15,6 +15,7 @@ const SNOWFLAKE_OPACITY_MIN = 0.7; // Minimum opacity
 const SNOWFLAKE_OPACITY_MAX = 1; // Maximum opacity
 const DELAY_MIN = 0;
 const DELAY_MAX = 1000;
+const SIZE_VARIATION = 2;
 
 export default function LightSnowfall({ contentHeight, contentWidth, isPageVisible }: SeasonalSectionProps) {
   // Only initialize if content dimensions are not zero.
@@ -58,7 +59,7 @@ export default function LightSnowfall({ contentHeight, contentWidth, isPageVisib
   return springs.map((props, i) => {
     // Determines the frequency and direction of the "wind" affecting snowflake movement.
     const windInitialDirection = Math.random() < 0.5 ? -1 : 1;
-    const sizeVariation = getRandomIntegerInRange(SNOWFLAKE_SIZE - 2, SNOWFLAKE_SIZE + 2);
+    const sizeVariation = getRandomIntegerInRange(SNOWFLAKE_SIZE - SIZE_VARIATION, SNOWFLAKE_SIZE + SIZE_VARIATION);
     const snowflakeOpacity = getRandomIntegerInRange(SNOWFLAKE_OPACITY_MIN, SNOWFLAKE_OPACITY_MAX);
 
     return <animated.div
