@@ -36,7 +36,8 @@ export default function SummerSun({ contentHeight, contentWidth }: SeasonAnimati
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [
-    contentHeight
+    contentHeight,
+    handleScroll,
   ]);
 
   const [ spring ] = useSpring(() => {

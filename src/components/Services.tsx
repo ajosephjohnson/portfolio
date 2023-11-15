@@ -37,7 +37,7 @@ export default function Services() {
   return (
     <>
       <div className="p-12 text-2xl italic font-light">
-        Hi, I'm Alan. I help your business evolve along with technology.
+        Hi, I&apos;m Alan. I help your business evolve along with technology.
       </div>
       <div className="grid m-10 gap-10 grid-cols-2">
         {services.map((service, i) => (

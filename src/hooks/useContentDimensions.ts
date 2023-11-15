@@ -14,6 +14,7 @@ export default function useContentDimensions<T extends HTMLElement>(ref: RefObje
       setContentHeight(ref.current.offsetHeight);
       setContentWidth(ref.current.offsetWidth);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return {

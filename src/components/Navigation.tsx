@@ -10,6 +10,13 @@ import { useEffect, useState } from "react";
 export default function Navigation() {
   const [ activeSection, setActiveSection ] = useState('');
 
+  const sectionNames = [
+    Sections.Services,
+    Sections.Projects,
+    Sections.Testimonials,
+    Sections.HireMe
+  ];
+
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -29,14 +36,7 @@ export default function Navigation() {
     });
 
     return () => observer.disconnect();
-  }, []);
-
-  const sectionNames = [
-    Sections.Services,
-    Sections.Projects,
-    Sections.Testimonials,
-    Sections.HireMe
-  ];
+  }, [ sectionNames ]);
 
   return (
     <nav className="fixed top-0 right-0 z-10 text-white text-2xl font-bold">

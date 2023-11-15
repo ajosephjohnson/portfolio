@@ -35,7 +35,8 @@ export default function SummerMoon({ contentHeight, contentWidth }: SeasonAnimat
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [
-    contentHeight
+    contentHeight,
+    handleScroll,
   ]);
 
   const [ spring ] = useSpring(() => {
