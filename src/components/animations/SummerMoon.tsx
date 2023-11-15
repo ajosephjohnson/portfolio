@@ -2,13 +2,14 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { animated, useSpring } from '@react-spring/web';
-import { SeasonalAnimationProps } from './SeasonalSection';
+
+import { SeasonAnimationProps } from '@/components/animations';
 
 
 const MOON_SIZE = 50;
 const ARC_MULTIPLIER = 1.75;
 
-export default function SummerMoon({ contentHeight, contentWidth }: SeasonalAnimationProps) {
+export default function SummerMoon({ contentHeight, contentWidth }: SeasonAnimationProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [ scrollY, setScrollY ] = useState(0);
   const [ animationStartScrollPosition, setAnimationStartScrollPosition ] = useState(0);

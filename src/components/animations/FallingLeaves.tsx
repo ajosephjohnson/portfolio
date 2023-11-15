@@ -1,10 +1,10 @@
 'use client'
 
 import { useEffect } from 'react';
-
 import { useSprings, animated, easings, to } from '@react-spring/web';
-import { getRandomIntegerInRange, getRandomXPosition } from './helpers';
-import { SeasonalAnimationProps } from './SeasonalSection';
+
+import { getRandomIntegerInRange, getRandomXPosition } from '@/components/animations/helpers';
+import { SeasonAnimationProps } from '@/components/animations';
 import LeafSvg from './LeafSvg';
 
 
@@ -17,7 +17,7 @@ const DELAY_MAX = 5000;
 const LEAF_COLORS = [ 'fill-tan', 'fill-sienna', 'fill-peru' ];
 const SIZE_VARIATION = 10;
 
-export default function FallingLeaves({ contentHeight, contentWidth, isPageVisible }: SeasonalAnimationProps) {
+export default function FallingLeaves({ contentHeight, contentWidth, isPageVisible }: SeasonAnimationProps) {
   // Only initialize if content dimensions are not zero.
   const isReady = contentHeight !== 0 && contentWidth !== 0;
 

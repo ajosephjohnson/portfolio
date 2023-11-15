@@ -1,10 +1,10 @@
 'use client'
 
 import { useEffect } from 'react';
-
 import { useSprings, animated, easings, to } from '@react-spring/web';
-import { getRandomIntegerInRange, getRandomXPosition } from './helpers';
-import { SeasonalAnimationProps } from './SeasonalSection';
+
+import { getRandomIntegerInRange, getRandomXPosition } from '@/components/animations/helpers';
+import { SeasonAnimationProps } from '@/components/animations';
 
 
 const ANIMATION_DURATION = 9000;
@@ -17,7 +17,7 @@ const DELAY_MIN = 0;
 const DELAY_MAX = 1000;
 const SIZE_VARIATION = 2;
 
-export default function LightSnowfall({ contentHeight, contentWidth, isPageVisible }: SeasonalAnimationProps) {
+export default function LightSnowfall({ contentHeight, contentWidth, isPageVisible }: SeasonAnimationProps) {
   // Only initialize if content dimensions are not zero.
   const isReady = contentHeight !== 0 && contentWidth !== 0;
 

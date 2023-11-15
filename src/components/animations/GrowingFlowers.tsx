@@ -1,10 +1,10 @@
 'use client'
 
 import React, { useState, useEffect, useRef } from 'react';
-
 import { animated, useSprings } from '@react-spring/web';
-import { SeasonalAnimationProps } from './SeasonalSection';
-import { getRandomFloatInRange, getRandomIntegerInRange } from './helpers';
+
+import { getRandomFloatInRange, getRandomIntegerInRange } from '@/components/animations/helpers';
+import { SeasonAnimationProps } from '@/components/animations';
 
 
 const FLOWER_SIZE = 50;
@@ -26,7 +26,7 @@ interface FlowerStyles {
   imgVariation: number;
 }
 
-export default function GrowingFlowers({ contentHeight, contentWidth }: SeasonalAnimationProps) {
+export default function GrowingFlowers({ contentHeight, contentWidth }: SeasonAnimationProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Scroll position state

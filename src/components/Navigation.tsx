@@ -1,13 +1,43 @@
+'use client'
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
-import { Seasons } from "./seasons";
-import NavButton from "./NavButton";
+import { NavButton, Sections } from "@/components";
+import { useEffect, useState } from "react";
 
-
-const seasons = [ Seasons.Fall, Seasons.Winter, Seasons.Spring, Seasons.Summer ];
 
 export default function Navigation() {
+  const [ activeSection, setActiveSection ] = useState('');
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        // When a section is intersecting with the viewport set the link to active
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    // Observe each page section
+    sectionNames.forEach(section => {
+      const sectionEl = document.getElementById(section);
+      if (sectionEl) {
+        observer.observe(sectionEl);
+      }
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const sectionNames = [
+    Sections.Services,
+    Sections.Projects,
+    Sections.Testimonials,
+    Sections.HireMe
+  ];
+
   return (
     <nav className="fixed top-0 right-0 z-10 text-white text-2xl font-bold">
       <ul className="flex justify-end mt-5">
@@ -41,9 +71,12 @@ export default function Navigation() {
         </li>
       </ul>
       <ul className="flex">
-        {seasons.map((season) => (
-          <li key={season} className="flex items-center">
-            <NavButton season={season} className="transition-colors duration-300 hover:text-tan py-2 px-4" />
+        {sectionNames.map(sectionName => (
+          <li key={sectionName} className="flex items-center">
+            <NavButton
+              sectionName={sectionName}
+              isActive={sectionName === activeSection}
+            />
           </li>
         ))}
       </ul>
