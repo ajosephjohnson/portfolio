@@ -36,9 +36,10 @@ export default function Services() {
 
   return (
     <>
-      <div className="p-12 text-2xl italic font-light">
+      <div className="px-10 py-12 text-2xl italic font-light">
         Hi, I&apos;m Alan. I help your business evolve along with technology.
       </div>
+      <h1 className="ml-10 text-3xl text-tan font-bold">Services</h1>
       <div className="grid m-10 gap-10 grid-cols-2">
         {services.map((service, i) => (
           <div

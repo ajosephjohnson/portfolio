@@ -39,7 +39,7 @@ export default function Navigation() {
   }, [ sectionNames ]);
 
   return (
-    <nav className="fixed top-0 right-0 z-10 text-white text-2xl font-bold">
+    <nav className="fixed top-0 right-0 z-10 text-white text-2xl font-bold mr-6">
       <ul className="flex justify-end mt-5">
         <li className="flex items-center">
           <a

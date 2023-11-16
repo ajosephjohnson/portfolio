@@ -2,6 +2,7 @@ import {
   Section,
   Sections,
   Services,
+  Projects,
 } from '@/components';
 
 
@@ -12,6 +13,7 @@ export default function Home() {
         <Services />
       </Section>
       <Section name={Sections.Projects}>
+        <Projects />
       </Section>
       <Section name={Sections.Testimonials}>
       </Section>

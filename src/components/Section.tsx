@@ -30,7 +30,7 @@ export default function Section({
   return (
     <section id={name} className="overflow-hidden relative sky-gradient dark:border-night-sky-mid border-day-sky-mid border-b-2 text-white">
       <SeasonAnimation section={name} props={animationProps} />
-      <div className="min-h-screen min-w-screen" ref={ref}>{children}</div>
+      <div className="min-h-screen min-w-screen overflow-hidden" ref={ref}>{children}</div>
     </section>
   );
 }
