@@ -4,6 +4,7 @@ import {
   Services,
   Projects,
   Testimonials,
+  HireMe,
 } from '@/components';
 
 
@@ -20,6 +21,7 @@ export default function Home() {
         <Testimonials />
       </Section>
       <Section name={Sections.HireMe}>
+        <HireMe />
       </Section>
     </main>
   );
