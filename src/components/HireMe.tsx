@@ -11,7 +11,7 @@ function ContactLink ({ icon, href, children }: PropsWithChildren<{ icon: IconDe
     <a
       href={href}
       {...(!isPhoneNumber && { target: "_blank", rel: "noopener noreferrer" })}
-      className="z-10 transition-colors duration-300 hover:text-tan text-xl font-bold ml-5"
+      className="z-10 transition-colors duration-300 hover:text-primary text-xl font-bold ml-5"
     >
       <FontAwesomeIcon icon={icon} width={25} height={25} className="mr-2" />
       {children}
@@ -22,7 +22,7 @@ function ContactLink ({ icon, href, children }: PropsWithChildren<{ icon: IconDe
 export default function HireMe() {
   return (
     <div className="m-10">
-      <h1 className="mt-10 text-3xl text-tan font-bold">Hire Me</h1>
+      <h1 className="mt-10 text-3xl font-bold">Hire Me</h1>
       <div className="grid m-10 gap-10 grid-cols-2 mt-20">
         <ContactLink icon={faPhone} href="tel:+15042326584">
           +1 504-232-6584

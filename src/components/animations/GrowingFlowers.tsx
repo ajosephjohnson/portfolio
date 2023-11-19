@@ -91,7 +91,7 @@ export default function GrowingFlowers({ contentHeight, contentWidth }: SeasonAn
     const scale = getRandomFloatInRange(MIN_SCALE, MAX_SCALE);
 
     // Cluster the flowers by type
-    const imgVariation = Math.floor(index / (NUM_FLOWERS / 2)) + 1;
+    const imgVariation = Math.floor(index / NUM_FLOWERS) + 1;
 
     setFlowerStyles((prevState) => {
       const newState = [ ...prevState ];
@@ -155,7 +155,7 @@ export default function GrowingFlowers({ contentHeight, contentWidth }: SeasonAn
           <animated.div key={i} style={{
             width: FLOWER_SIZE,
             height: FLOWER_SIZE,
-            background: `url('/flowers/flower-${imgVariation}.svg') no-repeat center center`,
+            background: `url('/animations/flowers/flower-${imgVariation}.svg') no-repeat center center`,
             filter: 'saturate(0.5)',
             backgroundSize: 'cover',
             position: 'absolute',

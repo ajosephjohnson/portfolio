@@ -36,7 +36,7 @@ export default function Projects() {
 
   return (
     <div className="m-10">
-      <h1 className="mt-10 text-3xl text-tan font-bold">Projects</h1>
+      <h1 className="mt-10 text-3xl font-bold">Projects</h1>
       <div className="grid gap-10 grid-cols-2">
         {projects.map((project, i) => (
           <div

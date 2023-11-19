@@ -10,18 +10,17 @@ const config: Config = {
     extend: {
       colors: {
         // Light Mode Gradient
-        'day-sky-common': '#486D87',
-        'day-sky-mid': '#78909C',
+        'day-sky-common': '#506D84',
+        'day-sky-mid': '#889EAF',
 
         // Dark Mode Gradient
         'night-sky-common': '#20232A',
         'night-sky-mid': '#33363D',
 
         // theme colors
-        'tan': '#D2B48C',
-        'sienna': '#A0522D',
-        'peru': '#CD853F',
-      },
+        'primary': '#F3D5C0',
+        'brown-one': '#D4B499',
+      }
     },
   },
   plugins: [],

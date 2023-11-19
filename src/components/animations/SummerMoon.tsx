@@ -88,7 +88,7 @@ export default function SummerMoon({ contentHeight, contentWidth }: SeasonAnimat
           shadow-radiance-moon
         `}
         style={{
-          background: `url('/moon.svg') no-repeat center center`,
+          background: `url('/animations/moon.svg') no-repeat center center`,
           backgroundSize: '118%',
           boxShadow: '0 0 30px 10px rgba(230, 230, 250, 0.7)',
           width: MOON_SIZE,

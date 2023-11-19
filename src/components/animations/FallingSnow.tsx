@@ -67,7 +67,7 @@ export default function LightSnowfall({ contentHeight, contentWidth, isPageVisib
       style={{
         width: sizeVariation,
         height: sizeVariation,
-        backgroundImage: `url('/snowflakes/snowflake-${getRandomIntegerInRange(1, 12)}.svg')`,
+        backgroundImage: `url('/animations/snowflakes/snowflake-${getRandomIntegerInRange(1, 12)}.svg')`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center center',
         backgroundSize: 'cover',        

@@ -27,7 +27,7 @@ export default function Testimonials() {
 
   return (
     <div className="m-10">
-      <h1 className="mt-10 text-3xl text-tan font-bold">Testimonials</h1>
+      <h1 className="mt-10 text-3xl font-bold">Testimonials</h1>
       <div className="grid gap-10 grid-cols-2">
         {testimonials.map((testimonial, i) => (
           <div
