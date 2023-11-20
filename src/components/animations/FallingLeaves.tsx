@@ -14,7 +14,7 @@ const WIND_STRENGTH = 50;
 const LEAF_SIZE = 40;
 const DELAY_MIN = 500;
 const DELAY_MAX = 5000;
-const LEAF_COLORS = [ 'fill-primary', 'fill-brown-one' ];
+const LEAF_COLORS = [ 'fill-primary', 'fill-secondary' ];
 const SIZE_VARIATION = 10;
 
 export default function FallingLeaves({ contentHeight, contentWidth, isPageVisible }: SeasonAnimationProps) {

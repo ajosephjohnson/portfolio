@@ -19,7 +19,7 @@ const config: Config = {
 
         // theme colors
         'primary': '#F3D5C0',
-        'brown-one': '#D4B499',
+        'secondary': '#D4B499',
       }
     },
   },
