@@ -5,4 +5,5 @@ export { default as Testimonials } from '@/components/Testimonials';
 export { default as HireMe } from '@/components/HireMe';
 export { default as Navigation } from '@/components/Navigation';
 export { default as NavButton } from '@/components/NavButton';
+export { default as GoogleTagManager } from '@/components/GoogleTagManager';
 export { Sections } from '@/components/Sections';
