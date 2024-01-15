@@ -18,8 +18,8 @@ export default function RootLayout({
   children: React.ReactNode,
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en"> 
+      <body className={`${inter.className} sky-gradient dark:border-night-sky-mid border-day-sky-mid border-b-2 text-white`}>
         <GoogleTagManager />
         <Navigation />
         {children}

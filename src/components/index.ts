@@ -6,4 +6,5 @@ export { default as HireMe } from '@/components/HireMe';
 export { default as Navigation } from '@/components/Navigation';
 export { default as NavButton } from '@/components/NavButton';
 export { default as GoogleTagManager } from '@/components/GoogleTagManager';
+export { default as Container } from '@/components/Container';
 export { Sections } from '@/components/Sections';

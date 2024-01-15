@@ -4,7 +4,7 @@ import { useRef } from "react";
 
 import { useDarkMode, useContentDimensions, usePageVisibility } from "@/hooks";
 import { SeasonAnimation } from "@/components/animations";
-import { Sections } from "@/components";
+import { Container, Sections } from "@/components";
 
 
 export default function Section({
@@ -28,9 +28,11 @@ export default function Section({
   };
 
   return (
-    <section id={name} className="overflow-hidden relative sky-gradient dark:border-night-sky-mid border-day-sky-mid border-b-2 text-white">
+    <section id={name} className="overflow-hidden relative">
       <SeasonAnimation section={name} props={animationProps} />
-      <div className="min-h-screen min-w-screen overflow-hidden" ref={ref}>{children}</div>
+      <div className="min-h-screen min-w-screen overflow-hidden" ref={ref}>
+        <Container>{children}</Container>
+      </div>
     </section>
   );
 }
