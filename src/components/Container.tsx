@@ -1,5 +1,13 @@
-export default function Container({ children }: React.PropsWithChildren) {
-    return <div className="sm:max-w-6xl m-auto ">
+export default function Container(
+    {
+        maxWidthClass = 'max-w-6xl',
+        children,
+    }
+    : React.PropsWithChildren<{
+        maxWidthClass?: string
+    }>
+) {
+    return <div className={`${maxWidthClass} m-auto`}>
         {children}
     </div>;
 }
