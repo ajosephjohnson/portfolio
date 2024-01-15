@@ -10,7 +10,7 @@ import {
 
 export default function Home() {
   return (
-    <main>
+    <main className="pt-64 sm:pt-20 md:pt-0">
       <Section name={Sections.Services}>
         <Services />
       </Section>

@@ -41,7 +41,7 @@ export default function Navigation() {
   return (
     
       <nav className="fixed top-0 right-0 pb-20 z-10 text-white text-2xl font-bold pr-6 bg-gradient-to-b from-day-sky-common w-full">
-        <Container maxWidthClass="max-w-6xl">
+        <Container>
           <div className="flex justify-between">
             <div className="relative pl-10 pt-6 text-2xl italic font-light">
               Hi, I&apos;m Alan. I help your business evolve along with technology.
@@ -50,7 +50,7 @@ export default function Navigation() {
               <li className="flex items-center">
                 <a
                   href="tel:+15042326584"
-                  className="transition-colors duration-300 hover:text-primary py-2 px-4"
+                  className="transition-colors duration-300 hover:text-primary py-2 px-4 whitespace-nowrap"
                 >
                   +1 504-232-6584
                 </a>
@@ -77,7 +77,7 @@ export default function Navigation() {
               </li>
             </ul>
           </div>
-          <ul className="flex justify-end">
+          <ul className="flex justify-center sm:justify-end flex-wrap">
             {sectionNames.map(sectionName => (
               <li key={sectionName} className="flex items-center">
                 <NavButton

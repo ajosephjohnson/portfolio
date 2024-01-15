@@ -20,7 +20,10 @@ const config: Config = {
         // theme colors
         'primary': '#F3D5C0',
         'secondary': '#D4B499',
-      }
+      },
+      screens: {
+        'xs': '480px',
+      },
     },
   },
   plugins: [],
