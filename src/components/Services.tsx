@@ -35,8 +35,7 @@ export default function Services() {
   ];
 
   return (
-    <div className="mt-36">
-      <h1 className="ml-10 text-3xl font-bold">Services</h1>
+    <div className="mt-48">
       <div className="grid m-10 gap-10 grid-cols-2">
         {services.map((service, i) => (
           <div
