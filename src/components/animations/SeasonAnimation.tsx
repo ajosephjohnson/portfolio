@@ -33,7 +33,7 @@ export default function SeasonalAnimation({
         <LightRainfall { ...props } />
         <GrowingFlowers { ...props } />
       </>;
-    case Sections.HireMe:
+    case Sections.WorkWithMe:
       return props.isDarkMode
         ? <SummerMoon { ...props } />
         : <SummerSun { ...props } />;

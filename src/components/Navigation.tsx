@@ -14,7 +14,7 @@ export default function Navigation() {
     Sections.Services,
     Sections.Projects,
     Sections.Testimonials,
-    Sections.HireMe
+    Sections.WorkWithMe
   ];
 
   useEffect(() => {

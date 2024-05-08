@@ -19,10 +19,10 @@ function ContactLink ({ icon, href, children }: PropsWithChildren<{ icon: IconDe
   );
 }
 
-export default function HireMe() {
+export default function WorkWithMe() {
   return (
     <div className="m-10">
-      <h1 className="mt-10 text-3xl font-bold">Hire Me</h1>
+      <h1 className="mt-10 text-3xl font-bold">Work With Me</h1>
       <div className="grid m-10 gap-10 grid-cols-2 mt-20">
         <ContactLink icon={faPhone} href="tel:+18103215576">
           +1 810-321-5576
