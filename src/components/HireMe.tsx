@@ -24,8 +24,8 @@ export default function HireMe() {
     <div className="m-10">
       <h1 className="mt-10 text-3xl font-bold">Hire Me</h1>
       <div className="grid m-10 gap-10 grid-cols-2 mt-20">
-        <ContactLink icon={faPhone} href="tel:+15042326584">
-          +1 504-232-6584
+        <ContactLink icon={faPhone} href="tel:+18103215576">
+          +1 810-321-5576
         </ContactLink>
         <ContactLink icon={faEnvelope} href="mailto:ajosephjohnson@gmail.com">
           ajosephjohnson@gmail.com

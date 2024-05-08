@@ -49,10 +49,10 @@ export default function Navigation() {
             <ul className="flex justify-end mt-5">
               <li className="flex items-center">
                 <a
-                  href="tel:+15042326584"
+                  href="tel:+18103215576"
                   className="transition-colors duration-300 hover:text-primary py-2 px-4 whitespace-nowrap"
                 >
-                  +1 504-232-6584
+                  +1 810-321-5576
                 </a>
               </li>
               <li className="flex items-center">
