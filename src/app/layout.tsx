@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
-import { Navigation, GoogleTagManager } from '@/components';
+import { Header, GoogleTagManager } from '@/components';
 import './globals.css';
 
 
@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="en"> 
       <body className={`${inter.className} sky-gradient dark:border-night-sky-mid border-day-sky-mid border-b-2 text-white`}>
         <GoogleTagManager />
-        <Navigation />
+        <Header />
         {children}
       </body>
     </html>
