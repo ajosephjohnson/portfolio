@@ -9,17 +9,22 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Light Mode Gradient
-        'day-sky-common': '#506D84',
-        'day-sky-mid': '#889EAF',
 
-        // Dark Mode Gradient
-        'night-sky-common': '#20232A',
-        'night-sky-mid': '#33363D',
 
-        // theme colors
-        'primary': '#F3D5C0',
-        'secondary': '#D4B499',
+        
+
+
+        // // Light Mode Gradient
+        // 'day-sky-common': '#506D84',
+        // 'day-sky-mid': '#889EAF',
+
+        // // Dark Mode Gradient
+        // 'night-sky-common': '#20232A',
+        // 'night-sky-mid': '#33363D',
+
+        // // theme colors
+        // 'primary': '#F3D5C0',
+        // 'secondary': '#D4B499',
       },
       screens: {
         'xs': '480px',

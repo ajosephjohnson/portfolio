@@ -32,7 +32,7 @@ export default function Testimonials() {
         {testimonials.map((testimonial, i) => (
           <div
             key={i}
-            className={`rounded-lg p-10 ${i < 2 ? 'bg-gradient-to-t' : 'bg-gradient-to-b'} from-day-sky-common dark:from-night-sky-common to-transparent dark:bg-night-sky-common text-white`}
+            className={`rounded-lg p-10 ${i < 2 ? 'bg-gradient-to-t' : 'bg-gradient-to-b'} from-day-sky-common dark:from-night-sky-common to-transparent dark:bg-night-sky-common`}
           >
             <h2 className="text-2xl mb-4">{testimonial.name}</h2>
             <h2 className="text-xl mb-4">{testimonial.title}</h2>

@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en"> 
-      <body className={`${inter.className} sky-gradient dark:border-night-sky-mid border-day-sky-mid border-b-2 text-white`}>
+      <body className={`${inter.className} sky-gradient dark:border-night-sky-mid border-day-sky-mid border-b-2`}>
         <GoogleTagManager />
         <Header />
         {children}
