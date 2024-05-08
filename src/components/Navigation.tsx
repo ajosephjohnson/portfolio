@@ -44,7 +44,7 @@ export default function Navigation() {
         <Container>
           <div className="flex justify-between">
             <div className="relative pl-10 pt-6 text-2xl italic font-light">
-              Hi, I&apos;m Alan. I help your business evolve along with technology.
+              {`Alan Johnson. Web developer.`}
             </div>
             <ul className="flex justify-end mt-5">
               <li className="flex items-center">
