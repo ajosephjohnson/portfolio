@@ -1,6 +1,6 @@
 const SCROLL_DURATION = 2000;
 
-export default (sectionName: string) => (e: React.MouseEvent<HTMLButtonElement>) => {
+const useSmoothScroll = (sectionName: string) => (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
     const target = document.getElementById(sectionName);
@@ -74,3 +74,5 @@ export default (sectionName: string) => (e: React.MouseEvent<HTMLButtonElement>)
     // Start the animation
     requestAnimationFrame(animation);
 };
+
+export default useSmoothScroll;

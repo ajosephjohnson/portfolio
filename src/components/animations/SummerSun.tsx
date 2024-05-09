@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { animated, useSpring } from '@react-spring/web';
 
 import { SeasonAnimationProps } from '@/components/animations';
@@ -18,7 +18,7 @@ export default function SummerSun({ contentHeight, contentWidth }: SeasonAnimati
   // Only initialize if content dimensions are not zero.
   const isReady = contentHeight !== 0 && contentWidth !== 0;
 
-  const handleScroll = () => {
+  const handleScroll = useCallback(() => {
     if (!containerRef.current) {
       return;
     }
@@ -29,7 +29,9 @@ export default function SummerSun({ contentHeight, contentWidth }: SeasonAnimati
     setScrollY(scrollY);
     // Animation starts as soon as the section comes into view
     setAnimationStartScrollPosition(containerRect.top + scrollY - contentHeight);
-  };
+  }, [
+    contentHeight
+  ]);
 
   useEffect(() => {
     handleScroll();

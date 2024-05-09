@@ -9,24 +9,23 @@ import { useEffect, useState } from "react";
 
 const ibmPlexMono = IBM_Plex_Mono({ weight: '400', subsets: ['latin'], display: 'swap' });
 
-// eslint-disable-next-line react/jsx-no-comment-textnodes
 const TagLine: React.FC<{}> = () => (
   <div className={`relative pl-10 pt-6 text-4xl italic ${ibmPlexMono.className}`}>
     Alan Johnson
-    <span className="p-5">//</span>
+    <span className="p-5">{`//`}</span>
     Software Developer
   </div>
 );
 
+const sectionNames = [
+  Sections.Services,
+  Sections.Projects,
+  Sections.Testimonials,
+  Sections.WorkWithMe
+];
+
 export default function Header() {
   const [ activeSection, setActiveSection ] = useState('');
-
-  const sectionNames = [
-    Sections.Services,
-    Sections.Projects,
-    Sections.Testimonials,
-    Sections.WorkWithMe
-  ];
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -47,7 +46,7 @@ export default function Header() {
     });
 
     return () => observer.disconnect();
-  }, [ sectionNames ]);
+  }, []);
 
   return (
     
