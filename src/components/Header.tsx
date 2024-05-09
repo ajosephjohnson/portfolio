@@ -2,10 +2,20 @@
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { IBM_Plex_Mono } from 'next/font/google';
 
 import { Container, NavButton, Sections } from "@/components";
 import { useEffect, useState } from "react";
 
+const ibmPlexMono = IBM_Plex_Mono({ weight: '400', subsets: ['latin'], display: 'swap' });
+
+const TagLine: React.FC<{}> = () => (
+  <div className={`relative pl-10 pt-6 text-4xl italic ${ibmPlexMono.className}`}>
+    Alan Johnson
+    <span className="p-5">//</span>
+    Software Developer
+  </div>
+);
 
 export default function Header() {
   const [ activeSection, setActiveSection ] = useState('');
@@ -40,17 +50,15 @@ export default function Header() {
 
   return (
     
-      <nav className="fixed top-0 right-0 pb-20 z-10 text-2xl font-bold pr-6 bg-gradient-to-b from-day-sky-common w-full">
+      <nav className="fixed top-0 right-0 pb-20 z-10 text-2xl font-bold pr-6 bg-gradient-to-b from-slate-300 w-full">
         <Container>
-          <div className="flex justify-between">
-            <div className="relative pl-10 pt-6 text-2xl italic font-light">
-              {`Alan Johnson. Web developer.`}
-            </div>
-            <ul className="flex justify-end mt-5">
+          <div className="flex justify-between mb-5">
+            <TagLine />
+            <ul className="flex justify-end mt-4">
               <li className="flex items-center">
                 <a
                   href="tel:+18103215576"
-                  className="transition-colors duration-300 hover:text-primary py-2 px-4 whitespace-nowrap"
+                  className="transition-colors duration-300 hover:text-primary p-4 whitespace-nowrap"
                 >
                   +1 810-321-5576
                 </a>
@@ -77,7 +85,7 @@ export default function Header() {
               </li>
             </ul>
           </div>
-          <ul className="flex justify-center sm:justify-end flex-wrap">
+          <ul className="flex justify-center flex-wrap">
             {sectionNames.map(sectionName => (
               <li key={sectionName} className="flex items-center">
                 <NavButton

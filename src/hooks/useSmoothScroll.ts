@@ -73,4 +73,4 @@ export default (sectionName: string) => (e: React.MouseEvent<HTMLButtonElement>)
 
     // Start the animation
     requestAnimationFrame(animation);
-    };
+};

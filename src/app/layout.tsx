@@ -5,7 +5,7 @@ import { Header, GoogleTagManager } from '@/components';
 import './globals.css';
 
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'], display: 'swap' });
 
 export const metadata: Metadata = {
   title: 'Portfolio',

@@ -11,7 +11,7 @@ export default function NavButton({
 }) {
   const smoothScroll = useSmoothScroll(sectionName);
 
-  const activeClass = isActive ? 'text-primary' : '';
+  const activeClass = isActive ? 'text-white' : '';
 
   const displayName = sectionName
     .split('-')
@@ -21,7 +21,7 @@ export default function NavButton({
   return (
     <button
       onClick={smoothScroll}
-      className={`transition-colors duration-300 hover:text-primary py-2 px-4 ${activeClass}`}
+      className={`transition-colors duration-300 hover:text-white py-3 px-4 ${activeClass}`}
     >
       {displayName}
     </button>
