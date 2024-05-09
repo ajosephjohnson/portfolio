@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 
 const ibmPlexMono = IBM_Plex_Mono({ weight: '400', subsets: ['latin'], display: 'swap' });
 
+// eslint-disable-next-line react/jsx-no-comment-textnodes
 const TagLine: React.FC<{}> = () => (
   <div className={`relative pl-10 pt-6 text-4xl italic ${ibmPlexMono.className}`}>
     Alan Johnson
